@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.exp-bar {
+  width: 10em;
+  display: inline-block;
+}
+
+* { /* todo temp*/
+  padding: 1em;
+}
