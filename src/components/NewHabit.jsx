@@ -7,8 +7,6 @@ export default function NewHabit({setHabits}){
 
   function add(){
 
-
-
     let habit = {
       "name": name,
       "description": description,
@@ -25,15 +23,15 @@ export default function NewHabit({setHabits}){
 
   return (
     <div>
-      <span>New Habit</span>
+        <h4>New Habit</h4>
         <label htmlFor="name">Name:
-          <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}/>
+          <input type="text"  value={name} onChange={(e) => setName(e.target.value)}/>
         </label>
         <label htmlFor="description">Description:
-          <input type="text" name="description" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+          <input type="text" name="description"  value={description} onChange={(e) => setDescription(e.target.value)}/>
         </label>
         <label htmlFor="daily">Times Per Day:
-          <input type="number" name="daily" placeholder="1" min="1" value={daily} onChange={(e) => setDaily(Number(e.target.value))}/>
+          <input type="number" name="daily" min="1" value={daily} onChange={(e) => setDaily(Number(e.target.value))}/>
         </label>
         <button onClick={add}>Add Habit</button>
     </div>
