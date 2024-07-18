@@ -1,6 +1,7 @@
 import Hero from "./Hero.jsx";
 import Stats from "./Stats.jsx";
 import Habits from "./Habits.jsx";
+import Tip from "./Tip.jsx";
 
 
 // todo probably will want to store each habit completion as an array of timestamps so history can be retrieved
@@ -44,6 +45,7 @@ export default function App() {
         <>
             <Hero name={data.heroName}/>
             <Stats habits={data.habits}/>
+            <Tip/>
             <Habits habits={data.habits}/>
         </>
     )

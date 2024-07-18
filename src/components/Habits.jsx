@@ -14,13 +14,16 @@ export default function Habits({habits}) {
             // current is in seconds, must convert to milliseconds
             const completed = habit.completions.reduce((acc, current) => acc + (isToday(new Date(current * 1000)) ? 1 : 0), 0);
 
-            return <Habit key={key} name={habit.name} description={habit.description} daily={habit.daily} completed={completed} />
+            // todo streak should be calculated based on how many days had their habits fulfilled consecutively, rather than total completions
+            const streak = habit.completions.length;
+
+            return <Habit key={key} name={habit.name} description={habit.description} daily={habit.daily} completed={completed} exp={habit.exp} streak={streak} />
         }
     );
 
     return (
-        <>
+        <div className="habits">
             {content}
-        </>
-    )
+        </div>
+    );
 }

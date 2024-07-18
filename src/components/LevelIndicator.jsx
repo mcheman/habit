@@ -1,10 +1,7 @@
-export default function LevelIndicator({name, level}) {
+export default function LevelIndicator({level}) {
     return (
         <>
-            <span>
-                {name}
-            </span>
-            <span>
+            <span className="levelIndicator">
                 {level}
             </span>
         </>

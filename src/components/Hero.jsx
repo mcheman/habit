@@ -1,5 +1,5 @@
 export default function Hero({name}) {
     return (
-        <div>{name}</div>
+        <div className="hero">{name}</div>
     );
 }
