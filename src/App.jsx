@@ -5,47 +5,33 @@ import './App.css'
 // can multiple habits contribute to a single stat?
 const data = {
     "heroName": "Cheman",
-    "stats": {
-        "stat-0001": {
-            "name": "Hygiene",
-            "streak": 10, // fizzle is calculated from streak
-            "exp": 23450 // level is calculated based on total exp. Remaining exp until next level is displayed
-        },
-        "stat-0002": {
-            "name": "Intelligence",
-            "streak": 2,
-            "exp": 54
-        }
-
-    },
     "habits": {
         "habit-0001": {
             "name": "Read",
             "description": "Read every day for an hour", // todo how to handle partial completion?
             "daily": 1, // how many times habit should be completed in a day
-            "completed": 1, // how many times completed today, reset to 0 at end of day
-            "stat": "stat-0001" // link to corresponding stat key. TODO may want stat to keep track of this
+            "exp": 59432, // level is calculated based on total exp. Remaining exp until next level is displayed
+            "completions": [ // unix timestamps of completions. Streak is calculated based on these timestamps
+                1721308259, 1721306259, 1721108259
+            ]
         },
         "habit-0002": {
             "name": "Brush Teeth",
             "description": "Brush teeth after every meal",
             "daily": 3, // 3 times daily
-            "completed": 2,
-            // TODO initial state will be daily only. More complex rules could come later (like read 1000 pages of book in a year?)
-            // "available": [ // time periods when habit is available
-            //     "daily", // if habit can be completed multiple times, repeat the condition it can be completed under. Completion requirements will either be
-            //     // matched to the most specific condition available at each point, or solved for given X completions and the conditions
-            //     "daily",
-            //     "daily"
-            // ],
-            "stat": "stat-0002"
+            "exp": 30,
+            "completions": [
+
+            ]
         },
         "habit-0003": {
             "name": "Floss Teeth",
             "description": "Floss before bedtime",
             "daily": 1,
-            "completed": 0,
-            "stat": "stat-0001"
+            "exp": 65132334,
+            "completions": [
+                1721308259
+            ]
         }
     }
 };
@@ -57,13 +43,13 @@ function Hero({name}) {
     );
 }
 
-function Stats({stats}) {
+function Stats({habits}) {
 
+    // todo streak should be calculated based on how many days had their habits fulfilled consecutively, rather than total completions
 
-
-    const content = Object.entries(stats).map(
-        ([key, stat]) =>
-            <Stat key={key} name={stat.name} exp={stat.exp} streak={stat.streak}/>
+    const content = Object.entries(habits).map(
+        ([key, habit]) =>
+            <Stat key={key} name={habit.name} exp={habit.exp} streak={habit.completions.length}/>
     );
 
     return (
@@ -148,10 +134,12 @@ function DoneButton({isDisabled, onDone}) {
 
 function App() {
 
+
+
     return (
         <>
             <Hero name={data.heroName}/>
-            <Stats stats={data.stats}/>
+            <Stats habits={data.habits}/>
             <Habits habits={data.habits}/>
         </>
     )
