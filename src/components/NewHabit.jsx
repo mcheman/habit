@@ -17,20 +17,23 @@ export default function NewHabit({setHabits}){
       "completions": []
     }
     setHabits(habit)
+    // reset values to clear out inputs
+    setName("")
+    setDescription("")
+    setDaily(1)
   }
 
   return (
     <div>
-      {/*form that looks like the habit component*/}
       <span>New Habit</span>
         <label htmlFor="name">Name:
-          <input type="text" name="name" placeholder="name" onChange={(e) => setName(e.target.value)}/>
+          <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}/>
         </label>
         <label htmlFor="description">Description:
-          <input type="text" name="description" placeholder="description" onChange={(e) => setDescription(e.target.value)}/>
+          <input type="text" name="description" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)}/>
         </label>
         <label htmlFor="daily">Times Per Day:
-          <input type="number" name="daily" placeholder="1" min="1" onChange={(e) => setDaily(Number(e.target.value))}/>
+          <input type="number" name="daily" placeholder="1" min="1" value={daily} onChange={(e) => setDaily(Number(e.target.value))}/>
         </label>
         <button onClick={add}>Add Habit</button>
     </div>
