@@ -1,9 +1,7 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 
+// todo probably will want to store each habit completion as an array of timestamps so history can be retrieved
 // can multiple habits contribute to a single stat?
 const data = {
     "heroName": "Cheman",
@@ -77,6 +75,7 @@ function Stats({stats}) {
 
 function Stat({name, exp, streak}) {
 
+    // todo extract calculation logic into separate non-react file
     const level = Math.floor(Math.log(exp));
     const fizzleIntensity = Math.min(streak, 10);
 
