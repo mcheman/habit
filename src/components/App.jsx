@@ -1,6 +1,8 @@
 import Hero from "./Hero.jsx";
 import Stats from "./Stats.jsx";
 import Habits from "./Habits.jsx";
+import NewHabit from "./NewHabit.jsx";
+import { useState} from "react";
 import Tip from "./Tip.jsx";
 
 
@@ -40,13 +42,24 @@ const data = {
 };
 
 export default function App() {
+    const [habits, setHabits] = useState(data.habits);
+
+    function handleNewHabit(habit) {
+
+        let newHabits = { ...habits}
+        // Random number between 0-100. Can cause overlapping numbers in the object
+        const randNum = Math.floor(Math.random() * 100);
+        newHabits["newHabit" + randNum] = habit;
+        setHabits(newHabits);
+    }
 
     return (
         <>
             <Hero name={data.heroName}/>
-            <Stats habits={data.habits}/>
+            <Stats habits={habits}/>
             <Tip/>
-            <Habits habits={data.habits}/>
+            <Habits habits={habits}/>
+            <NewHabit habits={habits} setHabits={handleNewHabit}/>
         </>
     )
 }
