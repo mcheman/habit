@@ -1,6 +1,6 @@
 import { useState} from "react";
 
-export default function NewHabit({setHabits}){
+export default function NewHabit({setHabits, onClose}){
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [daily, setDaily] = useState(1);
@@ -19,6 +19,7 @@ export default function NewHabit({setHabits}){
     setName("")
     setDescription("")
     setDaily(1)
+    onClose()
   }
 
   return (

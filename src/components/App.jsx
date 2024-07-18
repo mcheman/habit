@@ -1,7 +1,7 @@
 import Hero from "./Hero.jsx";
 import Stats from "./Stats.jsx";
 import Habits from "./Habits.jsx";
-import NewHabit from "./NewHabit.jsx";
+import NewHabitModal from "./NewHabitModal.jsx";
 import { useState} from "react";
 import Tip from "./Tip.jsx";
 
@@ -59,7 +59,7 @@ export default function App() {
             <Stats habits={habits}/>
             <Tip/>
             <Habits habits={habits}/>
-            <NewHabit habits={habits} setHabits={handleNewHabit}/>
+            <NewHabitModal setHabits={handleNewHabit}/>
         </>
     )
 }
